@@ -1,15 +1,21 @@
-<h1>Places</h1>
+<h1>Placestagram</h1>
 
 <% if session["user_id"] %>
   <p>
     <a class="btn btn-primary mb-3" href="/places/new">New Place</a>
   </p>
-<% end %>
 
-<ul>
-  <% @places.each do |place| %>
-    <li>
-      <a href="/places/<%= place["id"] %>"><%= place["name"] %></a>
-    </li>
+  <% if @places.any? %>
+    <ul>
+      <% @places.each do |place| %>
+        <li>
+          <a href="/places/<%= place["id"] %>"><%= place["name"] %></a>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>You haven’t added any places yet.</p>
   <% end %>
-</ul>
+<% else %>
+  <p>To see a list of places and entries for those places, please <a href="/login">log in</a>.</p>
+<% end %>

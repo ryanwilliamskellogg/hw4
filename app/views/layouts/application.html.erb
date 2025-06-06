@@ -33,7 +33,7 @@
           </ul>
 
           <div class="d-flex align-items-center">
-            <% if session["user_id"] %>
+            <% if session["user_id"] && User.exists?(session["user_id"]) %>
               <span class="me-3">Logged in as: <%= User.find(session["user_id"])["username"] %></span>
               <a class="btn btn-outline-danger" href="/logout">Logout</a>
             <% else %>
