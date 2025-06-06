@@ -22,4 +22,7 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: placestagram_production
+  username: placestagram
+  password: <%= ENV["PLACESTAGRAM_DATABASE_PASSWORD"] %>
